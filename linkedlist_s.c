@@ -12,33 +12,35 @@ void add_s(list_s_t ** head, int item)
             return;
         }
         (*head)->data = item;
-        (*head)->next = NULL;
+        (*head)->next = (*head);
     } else {
         list_s_t *current = *head;
-        while (current->next != NULL) {
+        while (current->next != *head) {
             current = current->next;
         }
         current->next = (list_s_t *)malloc(sizeof(list_s_t));
         current->next->data = item;
-        current->next->next = NULL;
+        current->next->next = (*head);
     }
 }
 
 void print_s(list_s_t * head)
 {
     list_s_t * current = head;
-    while (current != NULL) {
+    do {
         printf("%d\n", current->data);
         current = current->next;
-    }
+    } while (current != head);
 }
 
 void free_all_s(list_s_t * head)
 {
-    list_s_t * temp = head;
-    while (head != NULL) {
-        temp = head->next;
-        free(head);
-        head = temp;
+    list_s_t * current = head;
+    list_s_t * temp;
+    while (current != head) {
+        temp = current;
+        current = current->next;
+        free(temp);
     }
+    free(head);
 }

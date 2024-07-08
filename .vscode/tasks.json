@@ -7,7 +7,7 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "main.c",
                 "linkedlist_s.c",
                 "linkedlist_d.c",
                 "-o",
