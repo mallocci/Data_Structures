@@ -8,7 +8,8 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
-                "linkedlist.c",
+                "linkedlist_s.c",
+                "linkedlist_d.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],

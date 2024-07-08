@@ -3,7 +3,7 @@
 
 #include"datas.h"
 
-void add(list_s_t ** head, int item)
+void add_s(list_s_t ** head, int item)
 {
     if (*head == NULL) {
         *head = (list_s_t *)malloc(sizeof(list_s_t));
@@ -24,7 +24,7 @@ void add(list_s_t ** head, int item)
     }
 }
 
-void print(list_s_t * head)
+void print_s(list_s_t * head)
 {
     list_s_t * current = head;
     while (current != NULL) {
@@ -33,7 +33,7 @@ void print(list_s_t * head)
     }
 }
 
-void free_all(list_s_t * head)
+void free_all_s(list_s_t * head)
 {
     list_s_t * temp = head;
     while (head != NULL) {
