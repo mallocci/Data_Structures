@@ -11,7 +11,7 @@
                 "linkedlist_s.c",
                 "linkedlist_d.c",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/data_struct"
             ],
             "options": {
                 "cwd": "${fileDirname}"
