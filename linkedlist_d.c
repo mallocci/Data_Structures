@@ -12,35 +12,38 @@ void add_d(list_d_t ** head, int item)
             return;
         }
         (*head)->data = item;
-        (*head)->prev = NULL;
-        (*head)->next = NULL;
+        (*head)->prev = (*head);
+        (*head)->next = (*head);
     } else {
         list_d_t *current = *head;
-        while (current->next != NULL) {
+        while (current->next != *head) {
             current = current->next;
         }
         current->next = (list_d_t *)malloc(sizeof(list_d_t));
         current->next->data = item;
         current->next->prev = current;
-        current->next->next = NULL;
+        current->next->next = (*head);
+        (*head)->prev = current->next;
     }
 }
 
 void print_d(list_d_t * head)
 {
     list_d_t * current = head;
-    while (current != NULL) {
+    do {
         printf("%d\n", current->data);
         current = current->next;
-    }
+    } while (current != head);
 }
 
 void free_all_d(list_d_t * head)
 {
-    list_d_t * temp = head;
-    while (head != NULL) {
-        temp = head->next;
-        free(head);
-        head = temp;
+    list_d_t * current = head;
+    list_d_t * temp;
+    while (current != head) {
+        temp = current;
+        current = current->next;
+        free(temp);
     }
+    free(head);
 }
